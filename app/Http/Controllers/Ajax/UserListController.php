@@ -8,6 +8,12 @@ class UserListController
 {
     function __invoke()
     {
-        return json_response(User::otherUsers()->get());
+        $users = User::select('id', 'name', 'email')
+            ->otherUsers()
+            ->withNumberOfCardsSent()
+            ->withNumberOfCardsReceived()
+        ->get();
+
+        return json_response($users);
     }
 }

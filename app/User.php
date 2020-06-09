@@ -27,4 +27,16 @@ class User extends Authenticatable
     {
         return $query->where('id', '<>', Auth::user()->id);
     }
+
+    public function scopeWithNumberOfCardsSent($query)
+    {
+        return $query->addSelect(['number_of_cards_sent' => GreetingCard::selectRaw('count(*)')
+            ->whereColumn('greeting_cards.from', '=', 'users.id')]);
+    }
+
+    public function scopeWithNumberOfCardsReceived($query)
+    {
+        return $query->addSelect(['number_of_cards_received' => GreetingCard::selectRaw('count(*)')
+            ->whereColumn('greeting_cards.to', '=', 'users.id')]);
+    }
 }

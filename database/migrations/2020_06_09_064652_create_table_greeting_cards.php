@@ -15,11 +15,14 @@ class CreateTableGreetingCards extends Migration
     {
         Schema::create('greeting_cards', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('type');
 
-            $table->foreignId('user_id')
+            $table->foreignId('from')
                 ->constrained('users')
                 ->onDelete('cascade');
+
+            $table->foreignId('to')
+                ->constrained('users');
 
             $table->timestamps();
         });
