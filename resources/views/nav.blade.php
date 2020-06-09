@@ -17,14 +17,14 @@
                     <router-link 
                         to="/users"
                         class="nav-link">
-                        Other Users
+                        Users
                     </router-link>
                 </li>
                 <li class="nav-item dropdown">
                     <router-link 
-                        to="/users"
+                        to="/cards"
                         class="nav-link">
-                        Other Users
+                        Cards
                     </router-link>
                 </li>
                 <li class="nav-item dropdown">
@@ -33,9 +33,15 @@
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('logout') }}"
+                        <router-link 
+                            to="/profile"
+                            class="nav-link">
+                            My Profile
+                        </router-link>
+                        <a class="nav-link" 
+                            href="{{ route('logout') }}"
                             onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
+                            document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

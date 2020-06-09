@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Ajax;
 
 use App\User;
 
-class UserListController
+class UsersListController
 {
     function __invoke()
     {
