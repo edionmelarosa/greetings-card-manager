@@ -8,11 +8,11 @@ class UsersListController
 {
     function __invoke()
     {
-        $users = User::select('id', 'name', 'email')
+        $users = User::select('id', 'name')
             ->otherUsers()
             ->withNumberOfCardsSent()
             ->withNumberOfCardsReceived()
-        ->get();
+            ->get();
 
         return json_response($users);
     }

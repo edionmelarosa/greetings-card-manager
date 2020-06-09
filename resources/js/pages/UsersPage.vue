@@ -11,7 +11,6 @@
                     <tr>
                         <th scope="col">Id</th>
                         <th scope="col">Name</th>
-                        <th scope="col">Email</th>
                         <th scope="col">Numbers of Card Sent</th>
                         <th scope="col">Numbers of Card Received</th>
                     </tr>
@@ -20,7 +19,6 @@
                     <tr v-for="(user, index) in users" :key="index">
                         <th scope="row">{{user.id}}</th>
                         <td>{{user.name}}</td>
-                        <td>{{user.email}}</td>
                         <td>{{user.number_of_cards_sent}}</td>
                         <td>{{user.number_of_cards_received}}</td>
                     </tr>
