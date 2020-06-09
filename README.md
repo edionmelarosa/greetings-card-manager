@@ -6,6 +6,9 @@
 2) cd to application folder.
 3) run `composer install` and `php artisan storage:link`.
 
+## Seeding Users
+run `php artisan db:seed --class=UserSeeder`
+
 ## Features
 1) User can register.
 2) User can login.
