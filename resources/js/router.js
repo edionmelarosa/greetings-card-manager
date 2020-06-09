@@ -18,6 +18,11 @@ const routes = [
         name     : 'UsersPage',
         component: () => import('@app/pages/UsersPage.vue')
     },
+    {
+        path     : '/cards/create',
+        name     : 'CardsCreatePage',
+        component: () => import('@app/pages/CardsCreatePage.vue')
+    },
 ];
 
 const router = new VueRouter({

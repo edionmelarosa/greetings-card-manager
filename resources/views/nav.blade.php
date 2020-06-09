@@ -21,11 +21,27 @@
                     </router-link>
                 </li>
                 <li class="nav-item dropdown">
-                    <router-link 
-                        to="/cards"
-                        class="nav-link">
-                        Cards
-                    </router-link>
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        Cards <span class="caret"></span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <router-link 
+                            to="/cards/create"
+                            class="nav-link">
+                            Create
+                        </router-link>
+                        <router-link 
+                            to="/cards/received"
+                            class="nav-link">
+                            Received Cards
+                        </router-link>
+                        <router-link 
+                            to="/cards/send"
+                            class="nav-link">
+                            Sent Cards
+                        </router-link>
+                    </div>
                 </li>
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
