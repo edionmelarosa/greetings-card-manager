@@ -6,7 +6,7 @@ const routes = [
     {
         path     : '/',
         name     : 'HomePage',
-        component: () => import('@app/pages/DashboardPage.vue')
+        component: () => import('@app/pages/ProfilePage.vue')
     },
     {
         path     : '/profile',
@@ -22,6 +22,16 @@ const routes = [
         path     : '/cards/create',
         name     : 'CardsCreatePage',
         component: () => import('@app/pages/CardsCreatePage.vue')
+    },
+    {
+        path     : '/cards/sent',
+        name     : 'SentCardsCreatePage',
+        component: () => import('@app/pages/SentCardsCreatePage.vue')
+    },
+    {
+        path     : '/cards/received',
+        name     : 'ReceivedCardsCreatePage',
+        component: () => import('@app/pages/ReceivedCardsCreatePage.vue')
     },
 ];
 

@@ -29,15 +29,32 @@
                         <photoshop v-model="colors"/>
                     </div>
                     <hr>
-                    <button type="submit" 
-                        class="btn btn-primary"
-                        :disabled="saving"
-                        >{{saving ? 'Sending...' : 'Send'}}</button>
-
+                    <div class="form-group">
+                        <label for="user">Send to User</label>
+                        <select class="form-control w-50" 
+                            :class="{'is-invalid': isInvalid('to')}"
+                            id="user"
+                            v-model="form.to">
+                            <option v-for="(user, index) in users" :key="index"
+                                :value="user.id">
+                                {{user.name}}
+                            </option>
+                        </select>
+                        <div class="invalid-feedback">
+                            {{invalidFeedback('to')}}
+                        </div>
+                    </div>
+                    <hr>
                     <button type="button" 
                         class="btn btn-info"
                         @click.prevent="exportCanvas"
-                        >Export</button>
+                        >Export as Image</button>
+                    <button type="submit" 
+                        class="btn btn-primary"
+                        :disabled="saving"
+                        @click.prevent="send"
+                        >
+                    {{saving ? 'Sending...' : 'Send'}}</button>
                 </form>
             </div>
         </div>
@@ -114,17 +131,19 @@
                 this.canvasInstance.add(newText);
             },
 
-            async submit () {
+            async send () {
                 if (this.saving) {
                     return; 
                 }
 
                 this.saving = true;
+                this.error = {};
 
+                let canvas  = document.querySelector('canvas');
                 let formData = new FormData;
 
                 formData.append('to', this.form.to ?? '');
-                formData.append('card', this.form.card ?? '');
+                formData.append('card', canvas.toDataURL() ?? '');
 
                 try {
                     let response = await sendCard(formData);
@@ -138,13 +157,13 @@
             },
 
             exportCanvas() {
-                let canvas  = document.querySelector( 'canvas' );
+                let canvas  = document.querySelector('canvas');
                 let link = document.createElement('a');
 
                 link.innerHTML = 'download image';
                 link.addEventListener('click', function(ev) {
                     link.href = canvas.toDataURL();
-                    link.download = "mypainting.png";
+                    link.download = "canvas.png";
                 }, false);
 
                 link.click();
@@ -152,18 +171,18 @@
         },
 
         async created () {
-            // this.loading = true;
+            this.loading = true;
 
-            // try {
-            //     let users =  await otherUsers();
-            //     this.users = users.data;
+            try {
+                let users =  await otherUsers();
+                this.users = users.data;
 
-            //     this.loading = false;
-            // } catch (error) {
-            //     this.loading = false;
-            //     this.error = error.response.data;
-            //     notify_error(error_processing_message())
-            // }
+                this.loading = false;
+            } catch (error) {
+                this.loading = false;
+                this.error = error.response.data;
+                notify_error(error_processing_message())
+            }
         },
 
         mounted () {

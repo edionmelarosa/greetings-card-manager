@@ -1,5 +1,5 @@
 <template>
-    <div class="col-md-4">
+    <div class="col-md-10">
             <div class="card">
                 <div class="card-header">Profile Page</div>
 

@@ -15,7 +15,7 @@ class CreateTableGreetingCards extends Migration
     {
         Schema::create('greeting_cards', function (Blueprint $table) {
             $table->id();
-            $table->string('type');
+            $table->string('card_file');
 
             $table->foreignId('from')
                 ->constrained('users')
