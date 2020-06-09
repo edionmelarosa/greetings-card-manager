@@ -4,7 +4,7 @@
 ## Installation
 1) Clone repository.
 2) cd to application folder.
-3) run ```php composer install```.
+3) run `composer install` and `php artisan storage:link`.
 
 ## Features
 1) User can register.
